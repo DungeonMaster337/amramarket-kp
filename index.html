@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="Коммерческое предложение по мобильным приложениям для AmraMarket — iOS + Android.">
+<meta property="og:title" content="AmraMarket — приложения для App Store и Google Play">
+<meta property="og:description" content="Честный разбор рисков, план и смета по мобильным приложениям для доски объявлений AmraMarket.">
+<meta property="og:type" content="website">
+<title>AmraMarket — приложения для App Store и Google Play</title>
+<style>
+  :root {
+    --ground: #F1F4F3;
+    --surface: #FFFFFF;
+    --surface-2: #E9EDEC;
+    --ink: #14201F;
+    --ink-soft: #485856;
+    --ink-faint: #7A8A88;
+    --line: #D5DDDB;
+    --accent: #C67F12;
+    --accent-ink: #8A5600;
+    --marine: #1F6F6B;
+    --good: #2E8F66;
+    --warn: #C98A2A;
+    --bad: #C0492F;
+    --good-bg: rgba(46,143,102,.12);
+    --warn-bg: rgba(201,138,42,.14);
+    --bad-bg: rgba(192,73,47,.12);
+    --shadow: 0 1px 2px rgba(20,32,31,.05), 0 8px 30px rgba(20,32,31,.07);
+    --mono: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --maxw: 860px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground: #0E1A1C;
+      --surface: #16262A;
+      --surface-2: #1C3034;
+      --ink: #EAF1EF;
+      --ink-soft: #A9BCB9;
+      --ink-faint: #6F8481;
+      --line: #274044;
+      --accent: #E6A02C;
+      --accent-ink: #F1B856;
+      --marine: #4FC0B7;
+      --good: #4FC08B;
+      --warn: #E0A93E;
+      --bad: #E27356;
+      --good-bg: rgba(79,192,139,.14);
+      --warn-bg: rgba(224,169,62,.14);
+      --bad-bg: rgba(226,115,86,.14);
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 40px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="light"] {
+    --ground: #F1F4F3; --surface: #FFFFFF; --surface-2: #E9EDEC; --ink: #14201F;
+    --ink-soft: #485856; --ink-faint: #7A8A88; --line: #D5DDDB; --accent: #C67F12;
+    --accent-ink: #8A5600; --marine: #1F6F6B; --good: #2E8F66; --warn: #C98A2A; --bad: #C0492F;
+    --good-bg: rgba(46,143,102,.12); --warn-bg: rgba(201,138,42,.14); --bad-bg: rgba(192,73,47,.12);
+    --shadow: 0 1px 2px rgba(20,32,31,.05), 0 8px 30px rgba(20,32,31,.07);
+  }
+  :root[data-theme="dark"] {
+    --ground: #0E1A1C; --surface: #16262A; --surface-2: #1C3034; --ink: #EAF1EF;
+    --ink-soft: #A9BCB9; --ink-faint: #6F8481; --line: #274044; --accent: #E6A02C;
+    --accent-ink: #F1B856; --marine: #4FC0B7; --good: #4FC08B; --warn: #E0A93E; --bad: #E27356;
+    --good-bg: rgba(79,192,139,.14); --warn-bg: rgba(224,169,62,.14); --bad-bg: rgba(226,115,86,.14);
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 40px rgba(0,0,0,.35);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--ground); color: var(--ink);
+    font-family: var(--sans); line-height: 1.6; -webkit-font-smoothing: antialiased;
+    font-size: 17px;
+  }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+  .eyebrow {
+    font-family: var(--mono); font-size: 12px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--ink-faint); font-weight: 500;
+  }
+  h1, h2, h3 { text-wrap: balance; letter-spacing: -.02em; line-height: 1.1; margin: 0; }
+  h1 { font-size: clamp(2.1rem, 6vw, 3.4rem); font-weight: 800; }
+  h2 { font-size: clamp(1.5rem, 4vw, 2.1rem); font-weight: 750; }
+  h3 { font-size: 1.15rem; font-weight: 700; letter-spacing: -.01em; }
+  p { margin: 0; }
+  strong { font-weight: 700; color: var(--ink); }
+  .accent { color: var(--accent-ink); }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    position: relative; overflow: hidden;
+    background: #0E1A1C; color: #EAF1EF;
+    border-bottom: 1px solid #274044;
+  }
+  .hero::before {
+    content: ""; position: absolute; inset: 0;
+    background:
+      radial-gradient(120% 90% at 82% -10%, rgba(230,160,44,.28), transparent 55%),
+      radial-gradient(90% 70% at 0% 100%, rgba(31,111,107,.35), transparent 60%);
+    pointer-events: none;
+  }
+  .hero .wrap { position: relative; padding: 72px 24px 64px; }
+  .hero .eyebrow { color: #C9A063; }
+  .hero h1 { margin: 20px 0 22px; max-width: 15ch; }
+  .hero h1 .u {
+    background: linear-gradient(transparent 62%, rgba(230,160,44,.35) 62%);
+    padding: 0 .06em;
+  }
+  .lede { font-size: 1.16rem; color: #C4D2CF; max-width: 54ch; }
+  .hero-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+  .chip {
+    font-family: var(--mono); font-size: 12.5px; letter-spacing: .02em;
+    padding: 7px 12px; border-radius: 999px; border: 1px solid #2E4B4F;
+    background: rgba(255,255,255,.03); color: #B7C8C5; white-space: nowrap;
+  }
+  .chip b { color: #E6A02C; font-weight: 600; }
+
+  /* ---------- SECTIONS ---------- */
+  section { padding: 56px 0; border-bottom: 1px solid var(--line); }
+  section:last-of-type { border-bottom: 0; }
+  .sec-head { margin-bottom: 28px; }
+  .sec-head .eyebrow { color: var(--accent-ink); }
+  .sec-head h2 { margin-top: 10px; }
+  .sec-head p { margin-top: 12px; color: var(--ink-soft); max-width: 60ch; }
+
+  .prose p + p { margin-top: 16px; }
+  .prose { color: var(--ink-soft); max-width: 62ch; }
+
+  /* ---------- RISK METER ---------- */
+  .meter { display: flex; flex-direction: column; gap: 16px; margin-top: 8px; }
+  .row {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+    padding: 18px 20px; box-shadow: var(--shadow);
+    display: grid; grid-template-columns: 1fr auto; gap: 6px 16px; align-items: center;
+  }
+  .row .label { font-weight: 700; font-size: 1rem; }
+  .row .verdict {
+    font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase;
+    padding: 4px 10px; border-radius: 999px; font-weight: 600; white-space: nowrap;
+  }
+  .v-good { color: var(--good); background: var(--good-bg); }
+  .v-warn { color: var(--warn); background: var(--warn-bg); }
+  .v-bad  { color: var(--bad);  background: var(--bad-bg); }
+  .track { grid-column: 1 / -1; height: 8px; border-radius: 999px; background: var(--surface-2); overflow: hidden; margin-top: 6px; }
+  .fill { height: 100%; border-radius: 999px; }
+  .row .note { grid-column: 1 / -1; color: var(--ink-faint); font-size: .92rem; margin-top: 4px; }
+
+  /* ---------- TWO PATHS ---------- */
+  .paths { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .path {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
+    padding: 24px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 14px;
+  }
+  .path.reco { border-color: color-mix(in srgb, var(--accent) 55%, var(--line)); position: relative; }
+  .path.reco::after {
+    content: "рекомендую"; position: absolute; top: -11px; right: 18px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+    background: var(--accent); color: #16110A; font-weight: 700; padding: 4px 10px; border-radius: 999px;
+  }
+  .path .ptag { font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); }
+  .path ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+  .path li { position: relative; padding-left: 24px; color: var(--ink-soft); font-size: .96rem; }
+  .path li::before { content: ""; position: absolute; left: 4px; top: .55em; width: 7px; height: 7px; border-radius: 2px; }
+  .path li.pro::before { background: var(--good); }
+  .path li.con::before { background: var(--bad); }
+  .path li.neu::before { background: var(--ink-faint); }
+
+  /* ---------- PILLARS ---------- */
+  .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .pillar {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 22px;
+    box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 10px;
+  }
+  .pillar .k { font-family: var(--mono); font-size: 12px; color: var(--accent-ink); letter-spacing: .06em; }
+  .pillar h3 { line-height: 1.2; }
+  .pillar p { color: var(--ink-soft); font-size: .95rem; }
+
+  /* ---------- SITE UPSELL ---------- */
+  .fixes { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px; margin-top: 6px; }
+  .fix { display: flex; gap: 12px; align-items: flex-start; padding: 12px 0; border-top: 1px solid var(--line); }
+  .fix .n { font-family: var(--mono); font-size: 12px; color: var(--ink-faint); padding-top: 3px; min-width: 20px; }
+  .fix .t strong { display: block; margin-bottom: 2px; }
+  .fix .t span { color: var(--ink-soft); font-size: .92rem; }
+
+  /* ---------- STEPS ---------- */
+  .steps { display: flex; flex-direction: column; gap: 0; counter-reset: step; }
+  .step { display: grid; grid-template-columns: auto 1fr; gap: 18px; padding: 18px 0; border-top: 1px solid var(--line); }
+  .step:first-child { border-top: 0; }
+  .step .num {
+    counter-increment: step; font-family: var(--mono); font-weight: 700; font-size: 14px;
+    color: var(--accent-ink); background: var(--accent-bg, var(--surface-2)); border: 1px solid var(--line);
+    width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center;
+  }
+  .step .num::before { content: counter(step, decimal-leading-zero); }
+  .step h3 { margin-bottom: 3px; }
+  .step p { color: var(--ink-soft); font-size: .95rem; }
+
+  /* ---------- CTA / FOOTER ---------- */
+  .cta {
+    background: #0E1A1C; color: #EAF1EF; border-radius: 20px; padding: 40px;
+    position: relative; overflow: hidden; margin-top: 8px;
+  }
+  .cta::before {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(90% 120% at 90% 0%, rgba(230,160,44,.22), transparent 55%);
+  }
+  .cta > * { position: relative; }
+  .cta h2 { color: #fff; }
+  .cta p { color: #C4D2CF; margin-top: 12px; max-width: 50ch; }
+  .cta-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; align-items: center; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 1rem;
+    padding: 13px 22px; border-radius: 12px; text-decoration: none; border: 1px solid transparent;
+  }
+  .btn-primary { background: var(--accent); color: #16110A; }
+  .btn-ghost { border-color: #2E4B4F; color: #EAF1EF; }
+  .contact { font-family: var(--mono); font-size: 13px; color: #93A7A4; }
+  .contact b { color: #E6A02C; font-weight: 600; }
+
+  footer { padding: 34px 0 60px; color: var(--ink-faint); font-size: .88rem; }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+
+  .fade { opacity: 0; transform: translateY(14px); animation: rise .7s cubic-bezier(.2,.7,.2,1) forwards; }
+  .fade:nth-child(2) { animation-delay: .06s; }
+  .fade:nth-child(3) { animation-delay: .12s; }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .fade { animation: none; opacity: 1; transform: none; } }
+
+  a { color: var(--marine); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+  @media (max-width: 680px) {
+    .paths, .pillars, .fixes { grid-template-columns: 1fr; }
+    .hero .wrap { padding: 56px 22px 48px; }
+    .cta { padding: 28px; }
+    section { padding: 44px 0; }
+  }
+</style>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow fade">Коммерческое предложение · AmraMarket · iOS + Android</div>
+    <h1 class="fade">«Гарантию, что&nbsp;не&nbsp;удалят» не&nbsp;даёт никто. Я&nbsp;дам <span class="u">кое-что надёжнее</span>.</h1>
+    <p class="lede fade">Честно: 100% гарантию, что приложение не снимут со стора, не может дать ни один разработчик — это решают Apple и Google. Но я точно знаю, <strong style="color:#EAF1EF">почему</strong> приложения удаляют — и как построить ваши так, чтобы риск был близок к нулю, а push-уведомления работали по-настоящему.</p>
+    <div class="hero-badges">
+      <span class="chip">Доска объявлений <b>Абхазии</b></span>
+      <span class="chip">Один код → <b>2 стора</b></span>
+      <span class="chip">Push <b>из коробки</b></span>
+      <span class="chip">Разработка на <b>Claude Code</b></span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Что я уже посмотрел</div>
+        <h2>Я изучил AmraMarket до того, как писать вам</h2>
+      </div>
+      <div class="prose">
+        <p>AmraMarket — бесплатная доска объявлений Абхазии и живой локальный портал: авто, недвижимость, отели и гостевые дома, электроника, «отдам даром», новости и раздел «полезно знать» для туристов. Монетизация — премиум-объявления и рекламные блоки. Вход через VK и Yandex.</p>
+        <p>Для такого проекта мобильное приложение — это не «иконка на телефоне для галочки». Это <strong>канал возвращаемости</strong>: человек один раз ставит приложение и получает push о новом объявлении по своему запросу, о сообщении от покупателя, о статусе модерации. Именно push превращает разовых посетителей в постоянных — и именно поэтому его нельзя делать «на отвали».</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Главный вопрос — про «не удалят»</div>
+        <h2>Где реально прячется риск отклонения</h2>
+        <p>Три сценария публикации и честная оценка риска по каждому. Разница между ними — это и есть та инженерная работа, за которую вы платите.</p>
+      </div>
+      <div class="meter">
+        <div class="row">
+          <span class="label">Google Play — PWA / TWA</span>
+          <span class="verdict v-good">риск низкий</span>
+          <div class="track"><div class="fill" style="width:20%;background:var(--good)"></div></div>
+          <span class="note">Google дружелюбен к веб-приложениям. Правильно собранный TWA проходит модерацию стабильно.</span>
+        </div>
+        <div class="row">
+          <span class="label">App Store — тонкая «обёртка» сайта</span>
+          <span class="verdict v-bad">риск высокий</span>
+          <div class="track"><div class="fill" style="width:82%;background:var(--bad)"></div></div>
+          <span class="note">Apple отклоняет webview-обёртки без нативной ценности (Guideline 4.2, «minimum functionality»). Так теряют время и деньги чаще всего.</span>
+        </div>
+        <div class="row">
+          <span class="label">App Store — настоящее нативное приложение</span>
+          <span class="verdict v-good">риск низкий</span>
+          <div class="track"><div class="fill" style="width:16%;background:var(--good)"></div></div>
+          <span class="note">Нативные экраны, реальный push, создание объявления через камеру — Apple видит полноценный продукт и пропускает.</span>
+        </div>
+      </div>
+      <p class="prose" style="margin-top:22px">Отдельно про push на iOS: у «PWA в браузере» он работает только с iOS 16.4+, только если пользователь сам добавил сайт на домашний экран, и нестабильно. Для доски объявлений, где push — ядро ценности, это не вариант. Поэтому под iOS я рекомендую нативный путь.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Как это сделать правильно</div>
+        <h2>Два пути — и почему я выбираю один</h2>
+      </div>
+      <div class="paths">
+        <div class="path">
+          <span class="ptag">Путь A · обёртка</span>
+          <h3>PWA завёрнутый в webview</h3>
+          <ul>
+            <li class="pro">Дёшево и быстро на старте</li>
+            <li class="pro">Один в один как сайт</li>
+            <li class="con">Apple часто отклоняет (4.2)</li>
+            <li class="con">Push на iOS ненадёжный</li>
+            <li class="con">Ощущается как «сайт в рамке»</li>
+          </ul>
+        </div>
+        <div class="path reco">
+          <span class="ptag">Путь B · нативно</span>
+          <h3>Настоящее приложение, один код на iOS + Android</h3>
+          <ul>
+            <li class="pro">Проходит ревью Apple и Google</li>
+            <li class="pro">Надёжный push из коробки</li>
+            <li class="pro">Нативная скорость и ощущение</li>
+            <li class="pro">Камера, оффлайн, оплаты — доступны</li>
+            <li class="neu">Дороже обёртки, но окупается возвращаемостью</li>
+          </ul>
+        </div>
+      </div>
+      <p class="prose" style="margin-top:20px">Для Android можно оставить PWA/TWA — там это работает. Под iOS беру нативную сборку. Итог: <strong>одна кодовая база даёт оба приложения</strong>, а сайт и приложения тянут данные из одного каталога через API-слой.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Почему со мной быстрее и спокойнее</div>
+        <h2>Три вещи, которых нет у большинства</h2>
+      </div>
+      <div class="pillars">
+        <div class="pillar">
+          <span class="k">// готовая основа</span>
+          <h3>Не с нуля, а с проверенной базы</h3>
+          <p>Работаю на production-основе, где авторизация, push-уведомления и нативные оплаты (App Store) уже собраны и обкатаны. Это экономит вам недели и снимает часть рисков ещё до старта.</p>
+        </div>
+        <div class="pillar">
+          <span class="k">// скорость × качество</span>
+          <h3>Разработка на Claude Code</h3>
+          <p>Веду код с AI-ассистентом Claude Code: быстрее пишу и, главное, прогоняю каждый кусок через автоматические ревью — логика, безопасность, edge-кейсы. Скорость без потери качества, а не вместо него.</p>
+        </div>
+        <div class="pillar">
+          <span class="k">// живой опыт</span>
+          <h3>Флагман — wow-atlas</h3>
+          <p>Мой основной проект wow-atlas — живое мобильное приложение, которое я веду от архитектуры до публикации в сторах. То есть путь «код → ревью Apple → магазин» я прохожу не в теории.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Бонус — раз уж вы «исправляете косячки»</div>
+        <h2>Что заодно подкручу по сайту</h2>
+        <p>Пока смотрел AmraMarket, отметил конкретные вещи. Это не претензии — это быстрые точки роста, которые логично закрыть в одном заходе с приложением.</p>
+      </div>
+      <div class="fixes">
+        <div class="fix"><span class="n">01</span><span class="t"><strong>Незаполненные рекламные блоки</strong><span>Много мест «Место для Вашей рекламы» — недопродано. Можно оформить как понятный оффер рекламодателю.</span></span></div>
+        <div class="fix"><span class="n">02</span><span class="t"><strong>Масштабирование на мобильном</strong><span>Стоит запрет зума (user-scalable=no) — это мешает части пользователей и вредит доступности.</span></span></div>
+        <div class="fix"><span class="n">03</span><span class="t"><strong>Единый API для приложения</strong><span>Чтобы приложение и сайт были «одним организмом», нужен аккуратный API-слой над каталогом.</span></span></div>
+        <div class="fix"><span class="n">04</span><span class="t"><strong>Скорость и картинки</strong><span>Оптимизация загрузки листингов и превью — прямой плюс к выдаче и удержанию.</span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Как двигаемся</div>
+        <h2>Прозрачный план без сюрпризов</h2>
+      </div>
+      <div class="steps">
+        <div class="step"><span class="num"></span><div><h3>Короткий созвон — 20 минут</h3><p>Уточняю функции приложения, кто ваша аудитория, есть ли доступ к бэкенду сайта и API. По итогу — точная смета и сроки, а не «пальцем в небо».</p></div></div>
+        <div class="step"><span class="num"></span><div><h3>Прототип ключевого экрана</h3><p>Показываю, как будет выглядеть лента объявлений и создание объявления в приложении — до полной разработки.</p></div></div>
+        <div class="step"><span class="num"></span><div><h3>Разработка + push</h3><p>Собираю приложение, подключаю push-уведомления, готовлю сборки под оба стора по гайдлайнам, чтобы пройти ревью с первого раза.</p></div></div>
+        <div class="step"><span class="num"></span><div><h3>Публикация и поддержка</h3><p>Помогаю с публикацией в App Store и Google Play и остаюсь на поддержке — обновления, фиксы, новые фичи.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="cta">
+        <div class="eyebrow" style="color:#C9A063">Следующий шаг</div>
+        <h2 style="margin-top:10px">Давайте 20 минут — и вы получите честную смету</h2>
+        <p>Без обещаний, которые нельзя сдержать. Расскажу, какой путь под ваш бюджет, что реально гарантировать, а что нет — и почему приложение окупится возвращаемостью пользователей.</p>
+        <div class="cta-actions">
+          <a class="btn btn-primary" href="#">Написать мне</a>
+          <span class="contact">Telegram: <b>@ваш_ник</b> &nbsp;·&nbsp; тел. <b>+7 ___ ___</b></span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Предложение подготовлено для AmraMarket · Сухум, Абхазия</span>
+    <span>Разработка мобильных приложений · iOS + Android</span>
+  </div>
+</footer>
+</body>
+</html>
